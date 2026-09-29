@@ -161,6 +161,32 @@ function AuthPage() {
             </div>
           </div>
 
+          {/* Demo Credentials Banner — always visible for student role */}
+          {selectedRole === "student" && (
+            <div className="rounded-xl border-2 border-accent/40 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 p-4 space-y-3 shadow-sm">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 font-bold text-sm text-primary">
+                  <Sparkles className="h-4 w-4 text-accent" />
+                  🎓 Demo Student Login
+                </div>
+                <span className="text-[10px] bg-accent/20 text-foreground/70 px-2 py-0.5 rounded-full font-medium border border-accent/30">For Testing</span>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-background rounded-lg p-2.5 border border-border">
+                  <p className="text-[10px] text-muted-foreground font-medium mb-0.5">📧 Email / Student ID</p>
+                  <code className="text-sm font-bold text-foreground font-mono select-all block">student@pcoer.in</code>
+                </div>
+                <div className="bg-background rounded-lg p-2.5 border border-border">
+                  <p className="text-[10px] text-muted-foreground font-medium mb-0.5">🔑 Password</p>
+                  <code className="text-sm font-bold text-foreground font-mono select-all block">student123</code>
+                </div>
+              </div>
+              <p className="text-[11px] text-muted-foreground text-center">
+                Use these credentials in the <strong>Sign In</strong> tab below ↓
+              </p>
+            </div>
+          )}
+
           {/* Form Card */}
           <Card className="shadow-md">
             <CardHeader className="pb-4">
