@@ -71,19 +71,21 @@ async function seed() {
   }
 
   const hashedPassword = await bcrypt.hash("password123", 10);
-  const adminHashedPassword = await bcrypt.hash("admin123", 10);
+  const adminRawPassword = process.env.ADMIN_PASSWORD || "admin123";
+  const adminHashedPassword = await bcrypt.hash(adminRawPassword, 10);
 
   // 1. Admin
-  let admin = await UserModel.findOne({ email: "placement@pcoer.in" });
+  const adminEmail = process.env.ADMIN_EMAIL || "admin@pcoer.in";
+  let admin = await UserModel.findOne({ email: adminEmail });
   if (!admin) {
     admin = await UserModel.create({
-      email: "placement@pcoer.in",
+      email: adminEmail,
       passwordHash: adminHashedPassword,
-      fullName: "PCCOER Placement Officer",
+      fullName: "Platform Admin",
       role: "admin",
-      avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
     });
-    console.log("Created Admin: placement@pcoer.in (Password: admin123)");
+    console.log(`Created Admin: ${adminEmail}`);
   }
 
   // 2. Sample Student

@@ -232,21 +232,8 @@ function SignInForm({ role }: { role: AppRole }) {
     <form onSubmit={onSubmit} className="space-y-4">
       {role === "student" && (
         <div className="rounded-xl border border-primary/25 bg-primary/5 p-3.5 text-xs text-foreground/90 space-y-2.5">
-          <div className="flex items-center justify-between">
-            <div className="font-semibold text-primary flex items-center gap-1.5">
-              <Sparkles className="h-4 w-4 text-accent" /> Demo Student Credentials
-            </div>
-            <button
-              type="button"
-              onClick={() => {
-                setEmail("student@pcoer.in");
-                setPassword("student123");
-                toast.success("Demo Student credentials auto-filled!");
-              }}
-              className="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-semibold bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition shadow-xs cursor-pointer"
-            >
-              <Sparkles className="h-3 w-3" /> Auto-fill Demo
-            </button>
+          <div className="font-semibold text-primary flex items-center gap-1.5">
+            <Sparkles className="h-4 w-4 text-accent" /> Demo Student Credentials
           </div>
 
           <div className="grid grid-cols-2 gap-2 bg-card rounded-lg p-2.5 border border-border text-[11px]">
@@ -270,49 +257,12 @@ function SignInForm({ role }: { role: AppRole }) {
       )}
 
       {role === "mentor" && (
-        <div className="rounded-xl border border-border bg-muted/40 p-3 text-xs text-foreground/90 space-y-2">
-          <div className="flex items-center justify-between">
-            <span className="font-semibold text-muted-foreground text-[11px] flex items-center gap-1">
-              <Sparkles className="h-3.5 w-3.5 text-accent" /> Demo Alumni (Microsoft):
-            </span>
-            <button
-              type="button"
-              onClick={() => {
-                setEmail("priya.patil@microsoft.alumni.com");
-                setPassword("password123");
-                toast.success("Demo Alumni credentials filled!");
-              }}
-              className="px-2 py-0.5 text-[10px] font-medium bg-secondary text-secondary-foreground rounded hover:bg-secondary/80 transition cursor-pointer"
-            >
-              Auto-fill Alumni
-            </button>
+        <div className="rounded-xl border border-border bg-muted/40 p-3 text-xs text-foreground/90 space-y-1.5">
+          <div className="font-semibold text-muted-foreground text-[11px] flex items-center gap-1">
+            <Sparkles className="h-3.5 w-3.5 text-accent" /> Demo Alumni (Microsoft):
           </div>
           <div className="text-[11px] text-muted-foreground font-mono">
             priya.patil@microsoft.alumni.com / password123
-          </div>
-        </div>
-      )}
-
-      {role === "admin" && (
-        <div className="rounded-xl border border-border bg-muted/40 p-3 text-xs text-foreground/90 space-y-2">
-          <div className="flex items-center justify-between">
-            <span className="font-semibold text-muted-foreground text-[11px] flex items-center gap-1">
-              <ShieldCheck className="h-3.5 w-3.5 text-primary" /> Placement Admin Demo:
-            </span>
-            <button
-              type="button"
-              onClick={() => {
-                setEmail("placement@pcoer.in");
-                setPassword("admin123");
-                toast.success("Admin demo credentials filled!");
-              }}
-              className="px-2 py-0.5 text-[10px] font-medium bg-secondary text-secondary-foreground rounded hover:bg-secondary/80 transition cursor-pointer"
-            >
-              Auto-fill Admin
-            </button>
-          </div>
-          <div className="text-[11px] text-muted-foreground font-mono">
-            placement@pcoer.in / admin123
           </div>
         </div>
       )}
@@ -326,7 +276,7 @@ function SignInForm({ role }: { role: AppRole }) {
           onChange={(e) => setEmail(e.target.value)}
           required
           autoComplete="email"
-          placeholder={role === "student" ? `student@${UNIVERSITY_DOMAIN}` : role === "admin" ? `placement@${UNIVERSITY_DOMAIN}` : `alumni@example.com`}
+          placeholder={role === "student" ? `student@${UNIVERSITY_DOMAIN}` : role === "admin" ? "shreya@gmail.com" : "alumni@example.com"}
         />
       </div>
       <div className="space-y-2">

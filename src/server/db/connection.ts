@@ -4,10 +4,13 @@ import dotenv from "dotenv";
 dotenv.config();
 
 function getMongoUri(): string {
-  return (
-    process.env.MONGODB_URI ||
-    "mongodb://127.0.0.1:27017/uni_mentor_connect"
-  );
+  const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    throw new Error(
+      "MONGODB_URI is not set. Please set the MONGODB_URI environment variable."
+    );
+  }
+  return uri;
 }
 
 interface MongooseCache {
