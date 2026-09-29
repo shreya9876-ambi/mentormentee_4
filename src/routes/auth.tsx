@@ -231,13 +231,89 @@ function SignInForm({ role }: { role: AppRole }) {
   return (
     <form onSubmit={onSubmit} className="space-y-4">
       {role === "student" && (
-        <div className="rounded-lg border border-primary/20 bg-primary/5 p-3 text-xs text-foreground/90 space-y-1">
-          <div className="font-semibold text-primary flex items-center gap-1.5">
-            <ShieldCheck className="h-4 w-4" /> Admin-Provisioned Access
+        <div className="rounded-xl border border-primary/25 bg-primary/5 p-3.5 text-xs text-foreground/90 space-y-2.5">
+          <div className="flex items-center justify-between">
+            <div className="font-semibold text-primary flex items-center gap-1.5">
+              <Sparkles className="h-4 w-4 text-accent" /> Demo Student Credentials
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setEmail("student@pcoer.in");
+                setPassword("student123");
+                toast.success("Demo Student credentials auto-filled!");
+              }}
+              className="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-semibold bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition shadow-xs cursor-pointer"
+            >
+              <Sparkles className="h-3 w-3" /> Auto-fill Demo
+            </button>
           </div>
-          <p className="text-muted-foreground leading-relaxed">
-            Student accounts are created by the <strong>PCCOER Placement Cell</strong>. Please use the login email and password sent to your inbox.
-          </p>
+
+          <div className="grid grid-cols-2 gap-2 bg-card rounded-lg p-2.5 border border-border text-[11px]">
+            <div>
+              <span className="text-muted-foreground block text-[10px] font-medium">Student ID / Email</span>
+              <code className="font-mono font-semibold text-foreground select-all">student@pcoer.in</code>
+            </div>
+            <div>
+              <span className="text-muted-foreground block text-[10px] font-medium">Password</span>
+              <code className="font-mono font-semibold text-foreground select-all">student123</code>
+            </div>
+          </div>
+
+          <div className="text-[11px] text-muted-foreground leading-relaxed flex items-start gap-1.5 pt-0.5">
+            <ShieldCheck className="h-3.5 w-3.5 text-primary shrink-0 mt-0.5" />
+            <span>
+              Official student accounts are provisioned by the <strong>PCCOER Placement Cell</strong>. For review & testing, use the demo credentials above.
+            </span>
+          </div>
+        </div>
+      )}
+
+      {role === "mentor" && (
+        <div className="rounded-xl border border-border bg-muted/40 p-3 text-xs text-foreground/90 space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="font-semibold text-muted-foreground text-[11px] flex items-center gap-1">
+              <Sparkles className="h-3.5 w-3.5 text-accent" /> Demo Alumni (Microsoft):
+            </span>
+            <button
+              type="button"
+              onClick={() => {
+                setEmail("priya.patil@microsoft.alumni.com");
+                setPassword("password123");
+                toast.success("Demo Alumni credentials filled!");
+              }}
+              className="px-2 py-0.5 text-[10px] font-medium bg-secondary text-secondary-foreground rounded hover:bg-secondary/80 transition cursor-pointer"
+            >
+              Auto-fill Alumni
+            </button>
+          </div>
+          <div className="text-[11px] text-muted-foreground font-mono">
+            priya.patil@microsoft.alumni.com / password123
+          </div>
+        </div>
+      )}
+
+      {role === "admin" && (
+        <div className="rounded-xl border border-border bg-muted/40 p-3 text-xs text-foreground/90 space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="font-semibold text-muted-foreground text-[11px] flex items-center gap-1">
+              <ShieldCheck className="h-3.5 w-3.5 text-primary" /> Placement Admin Demo:
+            </span>
+            <button
+              type="button"
+              onClick={() => {
+                setEmail("placement@pcoer.in");
+                setPassword("admin123");
+                toast.success("Admin demo credentials filled!");
+              }}
+              className="px-2 py-0.5 text-[10px] font-medium bg-secondary text-secondary-foreground rounded hover:bg-secondary/80 transition cursor-pointer"
+            >
+              Auto-fill Admin
+            </button>
+          </div>
+          <div className="text-[11px] text-muted-foreground font-mono">
+            placement@pcoer.in / admin123
+          </div>
         </div>
       )}
 
@@ -284,14 +360,29 @@ function SignUpForm({ role, onSwitchToSignIn }: { role: AppRole; onSwitchToSignI
         <div className="h-14 w-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto">
           <ShieldCheck className="h-7 w-7" />
         </div>
-        <div className="space-y-1.5 max-w-sm mx-auto">
+        <div className="space-y-2 max-w-sm mx-auto">
           <h3 className="font-semibold text-base text-foreground">Student Accounts are Admin-Created</h3>
           <p className="text-xs text-muted-foreground leading-relaxed">
             To ensure genuine campus placement records, student access is created and provisioned directly by the <strong>PCCOER Placement Cell</strong>.
           </p>
-          <p className="text-xs text-muted-foreground leading-relaxed pt-1">
-            Please check your official college email for your login credentials sent by the admin.
-          </p>
+
+          <div className="bg-primary/5 border border-primary/20 rounded-xl p-3 text-xs text-left space-y-2">
+            <div className="font-semibold text-primary text-[11px] flex items-center justify-between">
+              <span className="flex items-center gap-1">
+                <Sparkles className="h-3.5 w-3.5 text-accent" /> Demo Student Account for Testing:
+              </span>
+            </div>
+            <div className="grid grid-cols-2 gap-1.5 bg-card p-2 rounded-lg border border-border text-[11px]">
+              <div>
+                <span className="text-muted-foreground block text-[10px]">Student ID / Email:</span>
+                <code className="font-mono font-semibold text-foreground select-all">student@pcoer.in</code>
+              </div>
+              <div>
+                <span className="text-muted-foreground block text-[10px]">Password:</span>
+                <code className="font-mono font-semibold text-foreground select-all">student123</code>
+              </div>
+            </div>
+          </div>
         </div>
 
         <Button
@@ -299,7 +390,7 @@ function SignUpForm({ role, onSwitchToSignIn }: { role: AppRole; onSwitchToSignI
           onClick={onSwitchToSignIn}
           className="w-full max-w-xs mx-auto"
         >
-          Sign In with Admin-Provided Credentials
+          Sign In with Demo / Admin Credentials
         </Button>
       </div>
     );
