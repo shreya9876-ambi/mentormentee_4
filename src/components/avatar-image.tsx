@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { getAvatarUrl } from "@/lib/avatar";
+import { getDefaultAvatarUrl } from "@/lib/avatar";
 import { cn } from "@/lib/utils";
 
 export function AvatarImg({
@@ -12,19 +11,26 @@ export function AvatarImg({
   name: string | null | undefined;
   className?: string;
 }) {
-  const [url, setUrl] = useState<string | null>(null);
-  useEffect(() => {
-    let active = true;
-    getAvatarUrl(path).then((u) => active && setUrl(u));
-    return () => {
-      active = false;
-    };
-  }, [path]);
-  const initials = (name ?? "?").trim().split(/\s+/).slice(0, 2).map((s) => s[0]?.toUpperCase()).join("") || "?";
+  // Use the real photo if available, otherwise generate a gender-appropriate Indian avatar
+  const src =
+    path && path.trim() !== ""
+      ? path
+      : getDefaultAvatarUrl(name);
+
+  const initials =
+    (name ?? "?")
+      .trim()
+      .split(/\s+/)
+      .slice(0, 2)
+      .map((s) => s[0]?.toUpperCase())
+      .join("") || "?";
+
   return (
     <Avatar className={cn(className)}>
-      {url && <AvatarImage src={url} alt={name ?? "avatar"} />}
-      <AvatarFallback className="bg-primary text-primary-foreground">{initials}</AvatarFallback>
+      <AvatarImage src={src} alt={name ?? "avatar"} />
+      <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
+        {initials}
+      </AvatarFallback>
     </Avatar>
   );
 }

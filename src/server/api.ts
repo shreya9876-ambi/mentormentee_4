@@ -1035,7 +1035,7 @@ export const adminCreateAlumniServerFn = createServerFn({ method: "POST" })
       email,
       passwordHash,
       role: "mentor",
-      avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      avatarUrl: "",
     });
 
     const isApproved = data.approved !== false;
