@@ -239,7 +239,7 @@ function SignInForm({ role }: { role: AppRole }) {
           <div className="grid grid-cols-2 gap-2 bg-card rounded-lg p-2.5 border border-border text-[11px]">
             <div>
               <span className="text-muted-foreground block text-[10px] font-medium">Student ID / Email</span>
-              <code className="font-mono font-semibold text-foreground select-all">student@pcoer.in</code>
+              <code className="font-mono font-semibold text-foreground select-all">student@pccoer.in</code>
             </div>
             <div>
               <span className="text-muted-foreground block text-[10px] font-medium">Password</span>
@@ -325,7 +325,7 @@ function SignUpForm({ role, onSwitchToSignIn }: { role: AppRole; onSwitchToSignI
             <div className="grid grid-cols-2 gap-1.5 bg-card p-2 rounded-lg border border-border text-[11px]">
               <div>
                 <span className="text-muted-foreground block text-[10px]">Student ID / Email:</span>
-                <code className="font-mono font-semibold text-foreground select-all">student@pcoer.in</code>
+                <code className="font-mono font-semibold text-foreground select-all">student@pccoer.in</code>
               </div>
               <div>
                 <span className="text-muted-foreground block text-[10px]">Password:</span>
